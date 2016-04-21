@@ -1,34 +1,25 @@
-% files (lex skeleton powered)
+% files
 
 file('ypp.ypp').
 file('lpp.lpp').
 file('hpp.hpp').
 file('cpp.cpp').
-file('Makefile').
 
-consult('cpu.pl').
+% CPUs
 
-% supported oses
+cpu(x86,'Intel i386').
+cpu(i8086,'Intel i8086').
+cpu(cm,'ARM Cortex-M').
+cpu(avr,'Atmel ATmega AVR').
 
-consult('os/linux.pl').
-consult('os/win32.pl').
-banned_os(android).
-banned_os(ios).
-banned_os(raw).
-banned_os(dos).
+% OSes
 
-%% build/host/target triplets
+os(linux).
 
-target(X) :- os(X).
+% std.commands
 
-% std.programs
-
-cc("gcc").
-cxx("g++").
-
-make(build(linux),"make").
-make(build(linux),"mingw-make").
-make(build(win32),"mingw32-make").
-
-lex("flex").
-yacc("bison").
+cc('gcc').
+cxx('g++').
+make('make').
+lex('flex').
+yacc('bison').
