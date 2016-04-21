@@ -1,0 +1,6 @@
+*~
+*.swp
+exe.exe
+cpp.cpp
+hpp.hpp
+Makefile
