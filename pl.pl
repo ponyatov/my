@@ -4,7 +4,7 @@ file('Makefile').
 file('hpp.hpp').
 file('cpp.cpp').
 
-go :-
+files :-
 	file(X),
 	open(X,write,F),
 	close(F),
