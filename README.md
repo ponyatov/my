@@ -1,1 +1,1 @@
-(http://faculty.cooper.edu/smyth/cs225/ch7/prolog.htm)[Toy compiler in Prolog]
+[Toy compiler in Prolog](http://faculty.cooper.edu/smyth/cs225/ch7/prolog.htm)
