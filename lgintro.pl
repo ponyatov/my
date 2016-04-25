@@ -24,6 +24,39 @@ v --> [sings].
 
 e1 :- phrase(s,X),write(X),nl,fail.
 
+%%% E2: a trivial attribute grammar for a fragment of
+%%% English, with a synthesized attribute for structural 
+%%% description and enforcement of number agreement.
 
+s(s(S,P)) --> np(S,Num), vp(P,Num).
+np(np(D,N),Num) --> det(D,Num), n(N,Num).
+np(np(N),pl) --> n(N,pl).
+np(np(N),sg) --> pn(N,sg).
+vp(vp(V,O),Num) --> v(V,Num), np(O,_).
+vp(vp(V),Num) --> v(V,Num).
+n(n(L),Num) --> [L], { lex(L,n,Num) }.
+pn(pn(L),Num) --> [L], { lex(L,pn,Num) }.
+v(v(L),Num) --> [L], { lex(L,v,Num) }.
+det(det(L),Num) --> [L], { lex(L,det,Num) }.
+
+lex(mary,pn,sg).
+lex(john,pn,sg).
+lex(woman,n,sg).
+lex(women,n,pl).
+lex(man,n,sg).
+lex(men,n,pl).
+lex(apple,n,sg).
+lex(apples,n,pl).
+lex(the,det,_).
+lex(some,det,pl).
+lex(one,det,sg).
+lex(loves,v,sg).
+lex(love,v,pl).
+lex(eats,v,sg).
+lex(eat,v,pl).
+lex(sings,v,sg).
+lex(sing,v,pl).
+
+e2(X) :- s(x).
 
 :- initialization(true).
