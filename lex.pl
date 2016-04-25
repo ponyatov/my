@@ -37,7 +37,10 @@ chars([H|T]) --> char(H),!,chars(T).
 lex([H|T]) --> (spaces(H);char(H)),lex(T).
 lex([]) --> [].
 
-go :- phrase_from_file(lex(X),'/home/ponyatov/my/skelex.bI'),write(X),nl.
+lx([]) --> [].
+lx([H|T]) --> [H],lx(T).
+
+go :- phrase_from_file(lx(X),'/home/ponyatov/my/skelex.bI'),write(X),nl.
 %go :-
 %		open('/home/ponyatov/my/skelex.bI',read,SRCFILE),
 %		read_stream_to_codes(SRCFILE,SRC),

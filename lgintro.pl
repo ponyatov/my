@@ -24,4 +24,6 @@ v --> [sings].
 
 e1 :- phrase(s,X),write(X),nl,fail.
 
-:- initialization(e1).
+
+
+:- initialization(true).
