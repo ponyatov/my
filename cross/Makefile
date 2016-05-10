@@ -5,6 +5,7 @@ include mk/hw/$(HW).mk
 CWD = $(CURDIR)
 
 TC = $(CWD)/$(TARGET)
+XPATH = PATH=$(TC)/bin:$(PATH)
 GZ = $(CWD)/gz
 TMP = $(CWD)/tmp
 SRC = $(CWD)/src
@@ -46,5 +47,5 @@ CFG_BINUTILS = --target=$(TARGET) \
 .PHONY: binutils
 binutils: $(SRC)/$(BINUTILS)/README
 	rm -rf $(TMP)/$(BINUTILS) && mkdir $(TMP)/$(BINUTILS) &&\
-	cd $(TMP)/$(BINUTILS) && $(SRC)/$(BINUTILS)/$(CFG) $(CFG_BINUTILS) &&\
-	make && make install-strip
+	cd $(TMP)/$(BINUTILS) && $(XPATH) $(SRC)/$(BINUTILS)/$(CFG) $(CFG_BINUTILS) &&\
+	$(XPATH) make && make install-strip
