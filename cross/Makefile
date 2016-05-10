@@ -4,12 +4,12 @@ include mk/hw/$(HW).mk
 
 CWD = $(CURDIR)
 
-TC = $(CWD)/TARGET
+TC = $(CWD)/$(TARGET)
 GZ = $(CWD)/gz
 TMP = $(CWD)/tmp
 SRC = $(CWD)/src
 
-DIRS = $(BIN) $(GZ) $(TMP) $(SRC)
+DIRS = $(BIN) $(GZ) $(TMP) $(SRC) $(TC)
 
 .PHONY: all
 all:
