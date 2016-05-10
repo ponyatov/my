@@ -26,3 +26,12 @@ include mk/packages.mk
 .PHONY: gz
 gz:
 	$(WGET) http://ftp.gnu.org/gnu/binutils/$(BINUTILS).tar.bz2
+
+MAKE = make -j4
+CFG = configure --prefix=$(TC)
+
+CFG_BINUTILS = --target=$(TARGET)
+.PHONY: binutils
+binutils: $(SRC)/$(BINUTILS)/README
+	rm -rf $(TMP)/$(BINUTILS) && mkdir $(TMP)/$(BINUTILS) &&\
+	cd $(TMP)/$(BINUTILS) && echo $(SRC)/$(BINUTILS)/$(CFG) $(CFG_BINUTILS)
