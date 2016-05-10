@@ -36,11 +36,15 @@ $(SRC)/%/README: $(GZ)/%.tar.bz2
 	cd $(SRC) && bzcat $< | tar x && touch $@
 
 MAKE = make -j4
-CFG = configure --disable-nls --disable-werror --prefix=$(TC)
+CFG = configure --disable-nls --disable-werror \
+	--docdir=$(TMP)/doc --mandir=$(TMP)/man --infodir=$(TMP)/info \
+	--prefix=$(TC)
 
-CFG_BINUTILS = --target=$(TARGET)
+CFG_BINUTILS = --target=$(TARGET) \
+	--with-sysroot=$(ROOT) --with-native-system-header-dir=/include \
+	--enable-lto --disable-multilib
 .PHONY: binutils
 binutils: $(SRC)/$(BINUTILS)/README
 	rm -rf $(TMP)/$(BINUTILS) && mkdir $(TMP)/$(BINUTILS) &&\
-	cd $(TMP)/$(BINUTILS) && $(SRC)/$(BINUTILS)/$(CFG) $(CFG_BINUTILS) && make
-#	make && make install-strip
+	cd $(TMP)/$(BINUTILS) && $(SRC)/$(BINUTILS)/$(CFG) $(CFG_BINUTILS) &&\
+	make && make install-strip
