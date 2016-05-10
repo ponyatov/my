@@ -1,0 +1,3 @@
+BINUTILS_VER = 2.24
+
+BINUTILS	= binutils-$(BINUTILS_VER)

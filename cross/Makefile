@@ -18,3 +18,11 @@ all:
 .PHONY: dirs
 dirs:
 	mkdir -p $(DIRS)
+	
+WGET = wget -NP gz
+
+include mk/packages.mk
+
+.PHONY: gz
+gz:
+	$(WGET) http://ftp.gnu.org/gnu/binutils/$(BINUTILS).tar.bz2
